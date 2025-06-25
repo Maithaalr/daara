@@ -51,8 +51,6 @@ if uploaded_file:
 
     with tab2:
         st.markdown("###  التحليلات البصرية")
-        col3, _ = st.columns(2)
-        with col3:
             if 'الدائرة' in df.columns:
                 dept_counts = df['الدائرة'].value_counts()
                 values = dept_counts.values
