@@ -60,6 +60,7 @@ if uploaded_file:
         st.markdown("###  التحليلات البصرية")
 
         if 'الدائرة' in df.columns:
+                df = df[~df['الدائرة'].isin(excluded_departments)]
             dept_counts = df['الدائرة'].value_counts()
             values = dept_counts.values
             labels = dept_counts.index
