@@ -79,7 +79,8 @@ if uploaded_file:
                 textposition='outside',
                 marker=dict(colors=px.colors.sequential.Blues[::-1])
             )])
-            fig_nat.update_layout(
+
+            fig.update_layout(
                 title='نسبة الموظفين حسب الدائرة',
                 title_x=0.5,
                 legend_font_size=13,
