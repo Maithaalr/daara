@@ -1,5 +1,4 @@
-﻿
-import streamlit as st
+﻿import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
@@ -57,25 +56,21 @@ if uploaded_file:
     tab1, tab2, tab3, tab4 = st.tabs([" نظرة عامة", " تحليلات بصرية", " البيانات المفقودة", " عرض البيانات"])
 
     with tab2:
-        st.markdown("###  التحليلات البصرية")
+        st.markdown("### التحليلات البصرية")
 
         if 'الدائرة' in df.columns:
-                df = df[~df['الدائرة'].isin(excluded_departments)]
+            df = df[~df['الدائرة'].isin(excluded_departments)]
             dept_counts = df['الدائرة'].value_counts()
             values = dept_counts.values
             labels = dept_counts.index
 
-            # تجهيز النص داخل الرسم
-            text_labels = labels
-
             # تجهيز النص في الشرح الجانبي
-            legend_text = [f"{df[df['الدائرة'] == code]['الدائرة'].iloc[0]} | {code} | {count} موظف"
-            for code, count in zip(labels, values)]
+            legend_text = [f"{code} | {count} موظف" for code, count in zip(labels, values)]
 
             fig = go.Figure(data=[go.Pie(
                 labels=legend_text,
                 values=values,
-                text=text_labels,
+                text=labels,
                 textinfo='text+percent',
                 textposition='outside',
                 marker=dict(colors=px.colors.sequential.Blues[::-1])
